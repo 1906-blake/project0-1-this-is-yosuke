@@ -1,12 +1,12 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import { usersRouter } from './routers/users.router';
-import { cardsRouter } from './routers/cards.router';
+import { reimbursementsRouter } from './routers/reimbursements.router';
 import { sessionMiddleware } from './middleware/session.middleware';
 import { authRouter } from './routers/auth.router';
 
 // specify the port will run on
-const port = process.env.PORT || 8012;
+const port = process.env.PORT || 8013;
 const app = express();
 
 /**
@@ -31,7 +31,7 @@ app.use(sessionMiddleware);
  * Register Routers
  ******************************************/
 app.use('/users', usersRouter);
-app.use('/cards', cardsRouter);
+app.use('/cards', reimbursementsRouter);
 app.use(authRouter);
 
 app.listen(port, () => {

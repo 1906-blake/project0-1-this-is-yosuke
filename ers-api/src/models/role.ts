@@ -1,6 +1,6 @@
 export class Role {
     constructor(
-    public roleId: number, // primary key
-    public role: string // not null, unique
+    public roleId = 0, // primary key
+    public role: '' // not null, unique
     ){}
 }
