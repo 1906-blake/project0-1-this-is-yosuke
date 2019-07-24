@@ -1,6 +1,6 @@
-export class ReimbursementStatus {
+export default class ReimbursementStatus {
     constructor(
-    public statusId: number, // primary key
-    public status: string // not null, unique
-    ){}
+    public statusId = 0, // primary key
+    public status =  '' // not null, unique
+    ) {}
 }

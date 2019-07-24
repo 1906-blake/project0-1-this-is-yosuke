@@ -1,17 +1,15 @@
 import Reimbursement from '../models/reimbursement';
-import { ReimbursementStatus } from '../models/reimbursementStatus';
-import { ReimbursementType } from '../models/reimbursementType';
+import ReimbursementStatus from '../models/reimbursementStatus';
+import ReimbursementType from '../models/reimbursementType';
 import User from '../models/user';
-import { Role } from '../models/role';
+import Role from '../models/role';
 
 export function reimbursementConverter(row) {
-    return new Reimbursement(row.reimbursement_reimbursementId, row.reimbursement_author, 
-        row.reimbursement_amount, row.reimbursement_dateSubmitted, row.reimbursement_dateResolved, 
-        row.reimbursement_description, row.reimbursement_resolver,
-        new ReimbursementStatus(row.reimbursementStatus_statusId, row.reimbursementStatus_status),
-        new ReimbursementType(row.reimbursementType_typeId, row.reimbursementType_type));
-
-        
-        //row.user_userId && new User(row.user_userId, row.username, '', row.first_name, row.last_name, row.email, 
-        //new Role(row.role_roleId, row.role_role)));
+    return new Reimbursement(row.reimbursement_id,
+        new User(row.author_user_id, row.author_username, '', row.author_first_name, row.author_last_name, row.author_email, new Role(row.author_role_id, row.author_role_type)),
+        row.amount, row.date_sumitted, row.date_resolved, row.description,
+        new User(row.resolver_user_id, row.resolver_username, '', row.resolver_first_name, row.resolver_last_name, row.resolver_email, new Role(row.resolver_role_id, row.resolver_role_type)),
+        new ReimbursementStatus(row.status_id, row.status_name),
+        new ReimbursementType(row.type_id, row.type_name)
+    );
 }

@@ -1,96 +1,47 @@
 import express from 'express';
-import * as reimbursementDao from '../daos/sql-card.dao';
+import * as reimbursementDao from '../daos/sql-reimbursement.dao';
 
 export const reimbursementsRouter = express.Router();
 
+
 /**
- * /cards
- * create new card resource
+ * reimbursements/status/:statusId
+ * find reimburse by id
+ */
+reimbursementsRouter.get('/status/:statusId', async (req, res) => {
+    const id = req.params.statusId; // gets status id and stores in id
+    const result = await reimbursementDao.findReimburseByStatusId(id);
+    res.json(result);
+});
+
+
+/**
+ * reimbursements/author/:userId
+ * find reimbursement author id
+ */
+reimbursementsRouter.get('/author/:userId', async (req, res) => {
+    const id = req.params.userId; // gets author id and stores in id
+    const result = await reimbursementDao.findByUserId(id);
+    res.json(result);
+});
+
+
+/**
+ * reimbursements
+ * submitting reimbursement
  */
 reimbursementsRouter.post('', async (req, res) => {
-    const reimbursement = req.body;
-    if (!reimbursement) {
-        res.sendStatus(400);
-    } else {
-        const id = await reimbursementDao.save(reimbursement);
-        if (!id) {
-            res.sendStatus(400);
-        } else {
-            card.id = id;
-            res.status(201); // created status code
-            res.json(card);
-        }
-    }
+    const result = await reimbursementDao.submitReimburse(req.body);
+    res.json(result);
+    // res.send(`submitting reimbursement`);
 });
 
 /**
- * /reimbursements
- * Find all reimbursements
+ * reimbursements
+ * Updating reimbursement
  */
-reimbursementsRouter.get('', async (req, res) => {
-    const reimbursements = await reimbursementDao.findAll();
-    res.json(reimbursements);
-});
-
-/**
- * /cards/game/:game
- * find cards by game
- */
-reimbursementsRouter.get('/game/:game', (req, res) => {
-    res.send(`finding cards by game: ${req.params.game}`);
-});
-
-
-/**
- * /cards/:id
- * find cards by id
- */
-cardsRouter.get('/:id', (req, res) => {
-    res.send(`finding cards by id: ${req.params.id}`);
-});
-
-/**
- * /cards/owner/:ownerId
- * find cards by owner's id
- */
-cardsRouter.get('/owner/:ownerId', (req, res) => {
-    res.send(`finding cards by owner's id: ${req.params.ownerId}`);
-});
-
-
-/**
- * /cards
- * create new card resource
- */
-cardsRouter.post('', async (req, res) => {
-    const card = req.body;
-    if (!card) {
-        res.sendStatus(400);
-    } else {
-        const id = await cardDao.save(card);
-        if (!id) {
-            res.sendStatus(400);
-        } else {
-            card.id = id;
-            res.status(201); // created status code
-            res.json(card);
-        }
-    }
-});
-
-/**
- * /cards
- * partially update card resource
- */
-cardsRouter.patch('', (req, res) => {
-    res.send(`updating card: ${JSON.stringify(req.body)}`);
-});
-
-/**
- * /cards
- * delete card by id
- */
-cardsRouter.delete('/:id', (req, res) => {
-    console.log(`deleting card with id: ${req.params.id}`);
-    res.send(`deleting card with id: ${req.params.id}`);
+reimbursementsRouter.patch('', async (req, res) => {
+    const result = await reimbursementDao.updateReimburse(req.body);
+    res.json(result);
+    // res.send(`updating reimbursement`);
 });

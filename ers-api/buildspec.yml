@@ -1,0 +1,9 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10
+artifacts:
+  files:
+    - '**/*'
+  base-directory: 'project0-1-this-is-yosuke/ers-api'

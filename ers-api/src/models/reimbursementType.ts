@@ -1,6 +1,6 @@
-export class ReimbursementType {
+export default class ReimbursementType {
     constructor(
-    public typeId: number, // primary key
-    public type: string, // not null, unique
-    ){}
+    public typeId = 0, // primary key
+    public type = '', // not null, unique
+    ) {}
 }

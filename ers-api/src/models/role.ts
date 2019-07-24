@@ -1,6 +1,6 @@
-export class Role {
+export default class Role {
     constructor(
-    public roleId = 0, // primary key
-    public role: '' // not null, unique
-    ){}
+        public roleId = 0, // primary key
+        public role = '' // not null, unique
+    ) { }
 }
