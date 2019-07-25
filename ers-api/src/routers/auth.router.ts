@@ -9,6 +9,8 @@ import * as UserDao from '../daos/sql-user.dao';
     const user = await UserDao.findByUsernameAndPassword(username, password);
     if (user) {
         req.session.user = user;
+        console.log('user found and login');
+        res.send('You have logged in! YeeHAW');
         res.end();
     } else {
         req.session.destroy(() => { });

@@ -3,7 +3,6 @@ import { PoolClient } from 'pg';
 import { convertSqlUser } from '../util/user.converter';
 import User from '../models/user';
 
-
 export async function findUsers(): Promise<User[]> { // promise to return array
     let client: PoolClient; // the max 5 from the user connection utility
     try {
@@ -48,7 +47,7 @@ export async function findByUsernameAndPassword(username: string, password: stri
         client = await connectionPool.connect(); // beginning the connection
         // removes from the stack until the connection is made then it contnues the funct
         const queryString = `
-        SELECT * FROM ers_user JOIN user_role USING (role_id)
+        SELECT * FROM app_user JOIN user_role USING (role_id)
         WHERE username = $1 AND pass = $2
         `;
         const result = await client.query(queryString, [username, password]);
@@ -77,7 +76,7 @@ export async function updateUser(user: User): Promise<User> {
     try {
         client = await connectionPool.connect(); // basically .then is everything after this
         const queryString = `
-            UPDATE ers_user SET username = $1, pass = $2, first_name = $3, last_name = $4, email = $5, role_id = $6
+            UPDATE app_user SET username = $1, pass = $2, first_name = $3, last_name = $4, email = $5, role_id = $6
             WHERE user_id = $7`;
         const params = [user.username, user.password, user.firstName, user.lastName, user.email, user.role.roleId, user.id];
         await client.query(queryString, params);
