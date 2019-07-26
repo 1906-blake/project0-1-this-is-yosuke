@@ -28,24 +28,24 @@ usersRouter.get('/user/:userid', async (req, res) => {
  * /users
  * updates user
  */
-// usersRouter.patch('', async (req, res) => { // Promise call
-//     const result  = req.body;
-//     const user = await userDao.updateUser(result); res.json(user); // calling the update User function in userDao
-//     res.json(user); // send info to postman in json form
-//     // res.send('update was done for the user is done');
-// });
+usersRouter.patch('/user/:userid', async (req, res) => { // Promise call
+    const result  = req.body;
+    const user = await userDao.updateUser(result); // calling the update User function in userDao
+    res.json(user); // send info to postman in json form
+    res.send('update was done for the user is done');
+});
 
 /**
  * /users
  * partially update user resource
  */
- usersRouter.patch('', async (req, res) => {
-    const userId = req.body.id;
-    const currentLoggedInUser = req.session.user;
-    if (currentLoggedInUser && currentLoggedInUser.id === userId) {
-        const updatedUser = await userDao.updateUser(req.body);
-        res.json(updatedUser);
-    } else {
-        res.sendStatus(403);
-    }
-});
+//  usersRouter.patch('', async (req, res) => {
+//     const userId = req.body.id;
+//     const currentLoggedInUser = req.session.user;
+//     if (currentLoggedInUser && currentLoggedInUser.id === userId) {
+//         const updatedUser = await userDao.updateUser(req.body);
+//         res.json(updatedUser);
+//     } else {
+//         res.sendStatus(403);
+//     }
+// });

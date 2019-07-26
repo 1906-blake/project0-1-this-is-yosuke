@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import { usersRouter } from './routers/users.router';
 import { reimbursementsRouter } from './routers/reimbursements.router';
 import { sessionMiddleware } from './middleware/session.middleware';
-import { authRouter } from './routers/auth.router';
+// import { authRouter } from './routers/auth.router';
 
 // specify the port will run on
 const port = process.env.PORT || 8012;
@@ -32,7 +32,7 @@ app.use(sessionMiddleware);
  ******************************************/
 app.use('/users', usersRouter);
 app.use('/reimbursements', reimbursementsRouter);
-app.use(authRouter);
+// app.use(authRouter);
 
 app.listen(port, () => {
     console.log('app started on port: ' + port);

@@ -80,7 +80,7 @@ export async function updateUser(user: User): Promise<User> {
             WHERE user_id = $7`;
         const params = [user.username, user.password, user.firstName, user.lastName, user.email, user.role.roleId, user.id];
         await client.query(queryString, params);
-        return convertSqlUser(user); // returns JS notation instead of SQL notation
+        // return convertSqlUser(user); // returns JS notation instead of SQL notation
     } catch (err) {
         console.log(err);
     } finally {
