@@ -40,7 +40,7 @@ reimbursementsRouter.post('', async (req, res) => {
  * reimbursements
  * Updating reimbursement
  */
-reimbursementsRouter.patch('', async (req, res) => {
+reimbursementsRouter.patch('/reimbursement/:reimbursementid', async (req, res) => {
     const result = await reimbursementDao.updateReimburse(req.body);
     res.json(result);
     // res.send(`updating reimbursement`);

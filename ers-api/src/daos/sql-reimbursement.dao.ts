@@ -73,9 +73,9 @@ export async function findById(reimbursementId: number) {
             FROM reimbursement AS r
             JOIN reimbursement_type AS rt USING (type_id)
             JOIN reimbursement_status AS rs USING (status_id)
-            JOIN ers_user AS author ON (author = author.user_id)
+            JOIN app_user AS author ON (author = author.user_id)
             JOIN user_role AS ar ON (ar.role_id = author.role_id)
-            JOIN ers_user AS resolver ON (resolver = resolver.user_id)
+            JOIN app_user AS resolver ON (resolver = resolver.user_id)
             JOIN user_role AS rr ON (rr.role_id = resolver.role_id)
             WHERE reimbursement_id = $1`;
         const result = await client.query(queryString, [reimbursementId]);
