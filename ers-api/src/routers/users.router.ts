@@ -30,12 +30,14 @@ usersRouter.get('/user/:userid', [
  * /users
  * updates user
  */
-usersRouter.patch('/user/:userid', async (req, res) => { // Promise call
+usersRouter.patch('/user/:userid', [
+    authMiddleware(9),
+    async (req, res) => { // Promise call
     const result  = req.body;
     const user = await userDao.updateUser(result); // calling the update User function in userDao
     res.json(user); // send info to postman in json form
     res.send('update for the user is done');
-});
+}]);
 
 /**
  * /users
