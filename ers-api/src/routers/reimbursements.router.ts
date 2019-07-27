@@ -38,6 +38,7 @@ reimbursementsRouter.get('/author/:userId', [
 reimbursementsRouter.post('', async (req, res) => {
     const result = await reimbursementDao.submitReimburse(req.body);
     res.json(result);
+    res.status(201);
     // res.send(`submitting reimbursement`);
 });
 
