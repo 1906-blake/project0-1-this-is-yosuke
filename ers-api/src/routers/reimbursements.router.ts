@@ -22,11 +22,13 @@ reimbursementsRouter.get('/status/:statusId', [
  * reimbursements/author/:userId
  * find reimbursement author id
  */
-reimbursementsRouter.get('/author/:userId', async (req, res) => {
+reimbursementsRouter.get('/author/:userId', [
+    authMiddleware(8),
+    async (req, res) => {
     const id = req.params.userId; // gets author id and stores in id
     const result = await reimbursementDao.findByUserId(id);
     res.json(result);
-});
+}]);
 
 
 /**
