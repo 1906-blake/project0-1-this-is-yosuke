@@ -14,8 +14,8 @@ import * as UserDao from '../daos/sql-user.dao';
         res.end();
     } else {
         req.session.destroy(() => { });
-        res.status(400);
         res.send('Invalid Credentials');
+        res.sendStatus(400);
     }
 });
 

@@ -1,13 +1,13 @@
 import express from 'express';
 import * as userDao from '../daos/sql-user.dao';
-// import { authMiddleware } from '../middleware/auth.middleware';
+import { authMiddleware } from '../middleware/auth.middleware';
 
 // the user router represents a subset of the application
 // for all enpoints starting with /users
 export const usersRouter = express.Router();
 
 usersRouter.get('', [
-    // authMiddleware('admin', 'finance-manager'),
+     authMiddleware(8, 9),
     async (req, res) => {
     const users = await userDao.findUsers(); // returning promise
     res.json(users);

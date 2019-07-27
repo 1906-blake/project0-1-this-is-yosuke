@@ -48,7 +48,7 @@ export async function findByUserId(authorId: number) {
             LEFT JOIN app_user AS resolver ON (r.resolver = resolver.user_id)
             INNER JOIN user_role AS rr ON (rr.role_id = resolver.role_id)
             WHERE author = $1
-            ORDER BY date_submitted ASC`;
+            ORDER BY date_submitted ASC`;       // ORDERS BY QUERY BY DATE
         const result = await client.query(queryString, [authorId]);
         // convert result from sql object to js object
         const sqlResult = result.rows[0];
