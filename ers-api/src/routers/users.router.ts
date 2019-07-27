@@ -32,7 +32,7 @@ usersRouter.patch('/user/:userid', async (req, res) => { // Promise call
     const result  = req.body;
     const user = await userDao.updateUser(result); // calling the update User function in userDao
     res.json(user); // send info to postman in json form
-    res.send('update was done for the user is done');
+    res.send('update for the user is done');
 });
 
 /**

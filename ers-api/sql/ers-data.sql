@@ -7,20 +7,19 @@ VALUES ('travel'), ('food'), ('other'), ('lodging');
 INSERT INTO reimbursement_status (status_name)
 VALUES ('resolved'), ('pending'), ('denied');
 
-INSERT INTO app_user (username, pass, first_Name, lastname, email, role_id)
-VALUES  ('dummy1', 'pass', 'dummy', 'one', 'dummy.one@revature.com', 1),
-        ('dummy2', 'pass', 'dummy', 'two', 'dummy.two@revature.com', 2),
-        ('billyG', 'pass', 'bill', 'gates', 'bill.gates@notrevature.com', 3),
-        ('bpkruppa', 'pass', 'blake', 'kruppa', 'blake.kruppa@revature.com', 1),
-        ('honestabe', 'pass', 'abe', 'lincoln', 'abe.lincoln@gmail.com', 3),
-        ('mchief', 'pass', 'master', 'chief', 'master.chief@yahoo.com', 2),
-        ('will', 'pass', 'willy', 'wanka', 'willy.wanka@gmail.com', 1); 
+INSERT INTO app_user (username, pass, first_name, last_name, email, role_id)
+VALUES  ('dummy1', 'pass', 'dummy', 'one', 'dummy.one@revature.com', 7),
+        ('dummy2', 'pass', 'dummy', 'two', 'dummy.two@revature.com', 8),
+        ('billyG', 'pass', 'bill', 'gates', 'bill.gates@notrevature.com', 9),
+        ('bpkruppa', 'pass', 'blake', 'kruppa', 'blake.kruppa@revature.com', 7),
+        ('honestabe', 'pass', 'abe', 'lincoln', 'abe.lincoln@gmail.com', 9),
+        ('mchief', 'pass', 'master', 'chief', 'master.chief@yahoo.com', 8),
+        ('will', 'pass', 'willy', 'wanka', 'willy.wanka@gmail.com', 7); 
 
 
 
 INSERT INTO reimbursement (author, amount, date_submitted, date_resolved, description, resolver, status_id, type_id)
-VALUES (3, 500, 1563584376049, 1563584376153, 'lunch', 1, 3, 4),
-        (3, 25, 1533584376040, 1563584376143, 'gas', 1, 2, 1);
-
-
+VALUES (22, 500, 20181004, 20181110, 'lunch', 26, 7, 10),
+        (25, 1300, 20181223, 20181230, 'Limo rental', 24, 9, 9),
+	(28, 500, 20190310, 20190416, 'Banquet', 26, 7, 10)
 

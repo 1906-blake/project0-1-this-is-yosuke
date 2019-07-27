@@ -86,6 +86,6 @@ export async function updateUser(user: User): Promise<User> {
     } finally {
         client && client.release();
     }
-    console.log('found all');
+    console.log('Successfully updated!');
     return undefined;
 }
