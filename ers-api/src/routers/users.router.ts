@@ -18,11 +18,13 @@ usersRouter.get('', [
  * /users/:id
  * find  user by id
  */
-usersRouter.get('/user/:userid', async (req, res) => {
+usersRouter.get('/user/:userid', [
+    authMiddleware(8, 9),
+    async (req, res) => {
     const id = req.params.userid; // gets status id and stores in id
     const users = await userDao.findById(id); // calling the find by id function in userDao
     res.json(users);
-});
+}]);
 
 /**
  * /users
