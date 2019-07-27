@@ -1,5 +1,6 @@
 import express from 'express';
 import * as reimbursementDao from '../daos/sql-reimbursement.dao';
+import { authMiddleware } from '../middleware/auth.middleware';
 
 export const reimbursementsRouter = express.Router();
 
@@ -8,11 +9,13 @@ export const reimbursementsRouter = express.Router();
  * reimbursements/status/:statusId
  * find reimburse by id
  */
-reimbursementsRouter.get('/status/:statusId', async (req, res) => {
+reimbursementsRouter.get('/status/:statusId', [
+    authMiddleware(8),
+    async (req, res) => {
     const id = req.params.statusId; // gets status id and stores in id
     const result = await reimbursementDao.findReimburseByStatusId(id);
     res.json(result);
-});
+}]);
 
 
 /**
