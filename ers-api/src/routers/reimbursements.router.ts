@@ -46,8 +46,10 @@ reimbursementsRouter.post('', async (req, res) => {
  * reimbursements
  * Updating reimbursement
  */
-reimbursementsRouter.patch('/reimbursement/:reimbursementid', async (req, res) => {
+reimbursementsRouter.patch('/reimbursement/:reimbursementid', [
+    authMiddleware(8),
+    async (req, res) => {
     const result = await reimbursementDao.updateReimburse(req.body);
     res.json(result);
     // res.send(`updating reimbursement`);
-});
+}]);
