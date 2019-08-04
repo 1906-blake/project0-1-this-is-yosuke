@@ -12,7 +12,7 @@ import * as UserDao from '../ers-daos/sql-user.dao';
         console.log('user found and login');
         console.log(req.session.user);
         res.json(req.session.user);
-        res.send('You have logged in! Welcome.');
+       // res.send('You have logged in! Welcome.');
         res.end();
     } else {
         req.session.destroy(() => { });
