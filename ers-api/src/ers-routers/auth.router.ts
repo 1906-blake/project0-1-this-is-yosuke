@@ -10,7 +10,9 @@ import * as UserDao from '../ers-daos/sql-user.dao';
     if (user) {
         req.session.user = user;
         console.log('user found and login');
-        res.send('You have logged in! Welcome.' + req.session);
+        console.log(req.session.user);
+        res.json(req.session.user);
+        res.send('You have logged in! Welcome.');
         res.end();
     } else {
         req.session.destroy(() => { });

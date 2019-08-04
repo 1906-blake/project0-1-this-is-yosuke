@@ -7,8 +7,9 @@ import { authMiddleware } from '../ers-middleware/auth.middleware';
 export const usersRouter = express.Router();
 
 usersRouter.get('', [
-     authMiddleware(8, 9),
+    authMiddleware(8, 9),
     async (req, res) => {
+        // console.log(req.session.user);
     const users = await userDao.findUsers(); // returning promise
     res.json(users);
     // res.send('Found all user');  // respond to server method
