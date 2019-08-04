@@ -1,9 +1,9 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import { usersRouter } from './routers/users.router';
-import { reimbursementsRouter } from './routers/reimbursements.router';
-import { sessionMiddleware } from './middleware/session.middleware';
-import { authRouter } from './routers/auth.router';
+import { usersRouter } from './ers-routers/users.router';
+import { reimbursementsRouter } from './ers-routers/reimbursements.router';
+import { sessionMiddleware } from './ers-middleware/session.middleware';
+import { authRouter } from './ers-routers/auth.router';
 
 // specify the port will run on
 const port = process.env.PORT || 8012;
@@ -21,6 +21,16 @@ app.use((req, res, next) => {
 
 // set up body parser to convert json body to object stored on req.body
 app.use(bodyParser.json());
+
+// allow cross origins
+app.use((req, resp, next) => {
+    console.log(req.get('host'));
+    resp.header('Access-Control-Allow-Origin', `${req.headers.origin}`);
+    resp.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    resp.header('Access-Control-Allow-Credentials', 'true');
+    resp.header('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT, PATCH');
+    next();
+  });
 
 /**
  * Session middleware to give us access to req.session for session data
