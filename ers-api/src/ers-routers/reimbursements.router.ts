@@ -4,6 +4,15 @@ import { authMiddleware } from '../ers-middleware/auth.middleware';
 
 export const reimbursementsRouter = express.Router();
 
+// get all reimbursements
+reimbursementsRouter.get('', [
+    // authMiddleware(8, 9),
+    async (req, res) => {
+        // console.log(req.session.user);
+    const reimbursements = await reimbursementDao.findReimbursements(); // returning promise
+    res.json(reimbursements);
+    // res.send('Found all user');  // respond to server method
+}]);
 
 /**
  * reimbursements/status/:statusId

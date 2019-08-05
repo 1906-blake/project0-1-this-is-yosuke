@@ -22,22 +22,25 @@ export class NavComponent extends React.Component {
             <li className="nav-item active">
               <Link to="/sign-in" className="unset-anchor nav-link">Sign In</Link>
             </li>
-            <li className="nav-item active">
+            {/* <li className="nav-item active">
               <Link to="/first" className="unset-anchor nav-link">First</Link>
-            </li>
-            <li className="nav-item active">
+            </li> */}
+            {/* <li className="nav-item active">
               <Link to="/second" className="unset-anchor nav-link">Second</Link>
-            </li>
-            <li className="nav-item active">
+            </li> */}
+            {/* <li className="nav-item active">
               <Link to="/clicker" className="unset-anchor nav-link">Clicker</Link>
-            </li>
-            <li className="nav-item active">
+            </li> */}
+            {/* <li className="nav-item active">
               <Link to="/cards" className="unset-anchor nav-link">Cards</Link>
+            </li> */}
+            <li className="nav-item active">
+              <Link to="/reimbursements" className="unset-anchor nav-link">View Reimbursements</Link>
             </li>
             <li className="nav-item active">
-              <Link to="/reimbursements" className="unset-anchor nav-link">Reimbursements</Link>
+              <Link to="/reimbursements" className="unset-anchor nav-link">Submit Reimbursements</Link>
             </li>
-            <li className="nav-item active dropdown">
+            {/* <li className="nav-item active dropdown">
               <div className="nav-link dropdown-toggle pointer" id="examples-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Examples</div>
               <div className="dropdown-menu" aria-labelledby="examples-dropdown">
                 <div className="dropdown-item"><Link to="/movies" className="unset-anchor nav-link active">Movies</Link></div>
@@ -46,10 +49,10 @@ export class NavComponent extends React.Component {
                 <div className="dropdown-item"><Link to="/chuck-norris" className="unset-anchor nav-link active">Chuck Norris Jokes</Link></div>
                 <div className="dropdown-item"><Link to="/pokemon" className="unset-anchor nav-link active">Pokemon</Link></div>
               </div>
-            </li>
-            <li className="nav-item active">
+            </li> */}
+            {/* <li className="nav-item active">
               <Link to="/nested" className="unset-anchor nav-link">Nested</Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </nav>

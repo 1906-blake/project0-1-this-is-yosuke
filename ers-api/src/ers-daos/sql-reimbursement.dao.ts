@@ -3,6 +3,26 @@ import { connectionPool } from '../ers-util/connection.util';
 import { reimbursementConverter } from '../ers-util/reimbursement.converter';
 import Reimbursement from '../ers-models/reimbursement';
 
+// Finding ALL OF THE REIMBURSEMENTS!!!
+export async function findReimbursements(): Promise<Reimbursement[]> { // promise to return array
+    let client: PoolClient; // the max 5 from the user connection utility
+    try {
+        client = await connectionPool.connect(); // beginning the connection
+        // removes from the stack until the connection is made then it contnues the funct
+        const queryString = `
+        SELECT * FROM reimbursement
+        LEFT JOIN app_user USING (user_Id)
+        `;
+        const result = await client.query(queryString);
+        return result.rows.map(reimbursementConverter); // run converter on result and return array of converted user on postman
+    } catch (err) {
+        console.log(err);
+    } finally {
+        client && client.release();
+    }
+    return undefined;
+}
+
 export async function submitReimburse(reimbursement: Reimbursement) {
     let client: PoolClient;
     try {

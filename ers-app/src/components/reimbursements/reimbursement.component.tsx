@@ -33,6 +33,17 @@ export default class ReimbursementComponent extends Component<{}, IState> {
         console.log(reimbursementsFromServer);
     }
 
+    getReimbursementsByAuthor = async () => {
+        const resp = await fetch(environment.context +'/reimbursements', {
+            credentials: 'include'
+        });
+        const reimbursementsFromServer = await resp.json();
+        this.setState({
+            reimbursements: reimbursementsFromServer
+        });
+        console.log(reimbursementsFromServer);
+    }
+
     getReimbursementsByStatusId = async (status: ReimbursementStatus) => {
         const resp = await fetch(environment.context +'/reimbursements/status/' + status.statusId, {
             credentials: 'include'
@@ -128,8 +139,8 @@ export default class ReimbursementComponent extends Component<{}, IState> {
                                     <td>{reimbursement.author && reimbursement.author.username}</td>
                                     <td>{reimbursement.amount}</td>
                                     <td>{reimbursement.dateSubmitted}</td>
-                                    <td>{reimbursement.description}</td>
                                     <td>{reimbursement.dateResolved}</td>
+                                    <td>{reimbursement.description}</td>
                                     <td>{reimbursement.resolver.username}</td>
                                     <td>{reimbursement.status.status}</td>
                                     <td>{reimbursement.type.type}</td>
