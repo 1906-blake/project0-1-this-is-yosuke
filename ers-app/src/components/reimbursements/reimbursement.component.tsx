@@ -111,7 +111,7 @@ export default class ReimbursementComponent extends Component<{}, IState> {
                     </DropdownToggle>
                     <DropdownMenu right>
                         <DropdownItem onClick={this.getReimbursements}>Status</DropdownItem>
-                        <DropdownItem onClick={this.getReimbursements}>Pendung</DropdownItem>
+                        <DropdownItem onClick={this.getReimbursements}>Pending</DropdownItem>
                         <DropdownItem onClick={this.getReimbursements}>Approved</DropdownItem>
                         <DropdownItem onClick={this.getReimbursements}>Denied</DropdownItem>
 
@@ -128,26 +128,7 @@ export default class ReimbursementComponent extends Component<{}, IState> {
                         }
                     </DropdownMenu>
                 </ButtonDropdown>
-                {/* <ButtonDropdown id="reimbursement-type-dropdown"
-                        isOpen={this.state.typeDropdown.isOpen} 
-                        toggle={this.toggleTypeDropdown}>
-
-                    <DropdownToggle caret>
-                        {this.state.typeDropdown.selection}
-                    </DropdownToggle>
-                    <DropdownMenu right>
-                        <DropdownItem onClick={this.getReimbursements}>All</DropdownItem>
-                        <DropdownItem divider />
-                        {
-                            this.state.type.map(status => (
-                                <DropdownItem key={'status-dropdown-' + type.typeId} 
-                                            onClick={() => this.getReimbursementsByTypeId(status)}>
-                                 {type.type}
-                                 </DropdownItem>
-                            ))
-                        }
-                    </DropdownMenu>
-                </ButtonDropdown> */}
+                
                 <table className="table table-striped table-dark">
                     <thead>
                         <tr>

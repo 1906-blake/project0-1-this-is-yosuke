@@ -1,8 +1,5 @@
 import React from 'react';
 import './App.css';
-import { FirstComponent } from './components/first/first.component';
-import Second from './components/second/second.component';
-import Third from './components/third/third.component';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import NotFound from './components/not-found/not-found.component';
 import { NavComponent } from './components/app-nav/app-nav-component';
@@ -14,7 +11,11 @@ import { Pokemon } from './components/pokemon/pokemon.component';
 import { Nested } from './components/nested/nested.component';
 import { SignIn } from './components/sign-in/sign-in.component';
 import ReimbursementComponent from './components/reimbursements/reimbursement.component';
-// import Cards from './components/cards/cards.component';
+import { Denied } from './components/denied/denied.component';
+import { Resolved } from './components/resolved/resolved.component';
+import { Pending } from './components/pending/pending.component';
+import { Submission} from './components/submission/submission.component';
+import { UpdateUser} from './components/update-user/update-user.component';
 
 const App: React.FC = () => {
   return (
@@ -23,10 +24,6 @@ const App: React.FC = () => {
         <NavComponent />
         {/* The switch will only render the first route to match */}
         <Switch>
-          <Route path="/first" component={FirstComponent} />
-          <Route path="/second" component={Second} />
-          <Route path="/third" component={Third} />
-          {/* <Route path="/cards" component={Cards} /> */}
           <Route path="/chuck-norris" component={Norris} />
           <Route path="/clicker" component={Clicker} />
           <Route path="/home" component={Home} />
@@ -35,6 +32,11 @@ const App: React.FC = () => {
           <Route path="/sign-in" component={SignIn} />
           <Route path="/tic-tac-toe" component={TicTacToe} />
           <Route path="/reimbursements" component={ReimbursementComponent} />
+          <Route path="/denied" component={Denied} />
+          <Route path="/pending" component={Pending} />
+          <Route path="/resolved" component={Resolved} />
+          <Route path="/submission" component={Submission} />
+          <Route path="/updateUser" component={UpdateUser} />
           <Route component={NotFound} />
         </Switch>
       </div>

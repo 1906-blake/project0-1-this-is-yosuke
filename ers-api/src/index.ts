@@ -4,6 +4,7 @@ import { usersRouter } from './ers-routers/users.router';
 import { reimbursementsRouter } from './ers-routers/reimbursements.router';
 import { sessionMiddleware } from './ers-middleware/session.middleware';
 import { authRouter } from './ers-routers/auth.router';
+import { statusRouter } from './ers-routers/status.router';
 
 // specify the port will run on
 const port = process.env.PORT || 8012;
@@ -42,6 +43,7 @@ app.use(sessionMiddleware);
  ******************************************/
 app.use('/users', usersRouter);
 app.use('/reimbursements', reimbursementsRouter);
+app.use('/status', statusRouter);
 app.use(authRouter);
 
 app.listen(port, () => {
