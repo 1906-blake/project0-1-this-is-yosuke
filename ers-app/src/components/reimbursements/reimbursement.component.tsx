@@ -4,7 +4,6 @@ import { ReimbursementStatus } from '../../models/reimbursementStatus';
 import { ReimbursementType } from '../../models/reimbursementType';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { environment } from '../../environment';
-// import { type } from 'os';
 
 interface IState {
     reimbursements: Reimbursement[],
