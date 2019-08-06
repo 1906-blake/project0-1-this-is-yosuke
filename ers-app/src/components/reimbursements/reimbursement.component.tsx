@@ -97,6 +97,14 @@ export default class ReimbursementComponent extends Component<{}, IState> {
     //     });
     //}
 
+    toggleStatusDropdown = () => {
+        this.setState({
+            statusDropdown: {
+                ...this.state.statusDropdown,
+                isOpen: !this.state.statusDropdown.isOpen
+            }
+        });
+    }
     render() {
         const reimbursements = this.state.reimbursements;
         return (
