@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Reimbursement from '../../models/reimbursement';
 import { ReimbursementStatus } from '../../models/reimbursementStatus';
 import { ReimbursementType } from '../../models/reimbursementType';
-// import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { environment } from '../../environment';
 // import { type } from 'os';
 
@@ -88,15 +88,6 @@ export default class ReimbursementComponent extends Component<{}, IState> {
         console.log(reimbursementsFromServer);
     }
 
-    // toggleStatusDropdown = () => {
-    //     this.setState({
-    //         statusDropdown: {
-    //             ...this.state.statusDropdown,
-    //             isOpen: !this.state.statusDropdown.isOpen
-    //         }
-    //     });
-    //}
-
     toggleStatusDropdown = () => {
         this.setState({
             statusDropdown: {
@@ -109,7 +100,7 @@ export default class ReimbursementComponent extends Component<{}, IState> {
         const reimbursements = this.state.reimbursements;
         return (
             <div id="reimbursement-table-container">
-                {/* <ButtonDropdown id="reimbursement-status-dropdown"
+                <ButtonDropdown id="reimbursement-status-dropdown"
                         isOpen={this.state.statusDropdown.isOpen} 
                         toggle={this.toggleStatusDropdown}>
 
@@ -128,7 +119,7 @@ export default class ReimbursementComponent extends Component<{}, IState> {
                             ))
                         }
                     </DropdownMenu>
-                </ButtonDropdown> */}
+                </ButtonDropdown>
                 {/* <ButtonDropdown id="reimbursement-type-dropdown"
                         isOpen={this.state.typeDropdown.isOpen} 
                         toggle={this.toggleTypeDropdown}>
