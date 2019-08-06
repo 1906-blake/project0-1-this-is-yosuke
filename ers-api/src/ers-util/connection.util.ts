@@ -6,7 +6,7 @@ const connectionConfiguration = {
     database: 'ers_api',
     password: '#1Psychic!',
     port: +process.env.REIMBURSEMENT_DB_PORT || 5432,
-    max: 5
+    max: 20
 };
  console.log(connectionConfiguration);
 export const connectionPool = new Pool(connectionConfiguration);

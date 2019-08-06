@@ -131,7 +131,6 @@ export async function findById(reimbursementId: number) {
 export async function findReimburseByStatusId(status_id: number) {
     let client: PoolClient;
     try {
-        client = await connectionPool.connect();
         console.log('here');
         client = await connectionPool.connect(); // basically .then is everything after this
         const queryString = `

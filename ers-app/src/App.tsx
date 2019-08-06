@@ -12,8 +12,8 @@ import { Nested } from './components/nested/nested.component';
 import { SignIn } from './components/sign-in/sign-in.component';
 import ReimbursementComponent from './components/reimbursements/reimbursement.component';
 import Denied from './components/denied/denied.component';
-import { Resolved } from './components/resolved/resolved.component';
-import { Pending } from './components/pending/pending.component';
+import Resolved from './components/resolved/resolved.component';
+import Pending from './components/pending/pending.component';
 import { Submission} from './components/submission/submission.component';
 import { UpdateUser} from './components/update-user/update-user.component';
 

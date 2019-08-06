@@ -22,7 +22,6 @@ export default class ReimbursementComponent extends Component<{}, IState> {
                 isOpen: false,
                 selection: 'All'
           
-                
             }
         };            
     }
@@ -32,7 +31,7 @@ export default class ReimbursementComponent extends Component<{}, IState> {
     }
 
     getReimbursementsByStatusId = async () => {
-        const resp = await fetch(environment.context +'/reimbursements/status/' + 8, {
+        const resp = await fetch(environment.context +'/reimbursements/status/' + 9, {
             credentials: 'include'
         });
         const reimbursementsFromServer = await resp.json();
@@ -45,29 +44,6 @@ export default class ReimbursementComponent extends Component<{}, IState> {
         const reimbursements = this.state.reimbursements;
         return (
             <div id="reimbursement-table-container">
-                {/* <ButtonDropdown id="reimbursement-status-dropdown"
-                        isOpen={this.state.statusDropdown.isOpen} 
-                        toggle={this.toggleStatusDropdown}>
-
-                    <DropdownToggle caret>
-                        {this.state.statusDropdown.selection}
-                    </DropdownToggle>
-                    <DropdownMenu right>
-                        <DropdownItem onClick={this.getReimbursements}>Status</DropdownItem>
-                        <DropdownItem onClick={this.getReimbursements}>Pending</DropdownItem>
-                        <DropdownItem onClick={this.getReimbursements}>Approved</DropdownItem>
-                        <DropdownItem onClick={this.getReimbursements}>Denied</DropdownItem>
-                         <DropdownItem divider />
-                        {
-                            this.state.status.map(status => (
-                                <DropdownItem key={'status-dropdown-' + status.statusId} 
-                                            onClick={() => this.getReimbursementsByStatusId(status)}>
-                                 {status.status}
-                                 </DropdownItem>
-                            ))
-                        }
-                    </DropdownMenu>
-                </ButtonDropdown> */}
                 
                 <table className="table table-striped table-dark">
                     <thead>
