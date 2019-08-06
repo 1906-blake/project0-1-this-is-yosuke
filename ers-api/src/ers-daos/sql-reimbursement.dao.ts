@@ -10,10 +10,24 @@ export async function findReimbursements(): Promise<Reimbursement[]> { // promis
         client = await connectionPool.connect(); // beginning the connection
         // removes from the stack until the connection is made then it contnues the funct
         const queryString = `
-        SELECT * FROM reimbursement
-        LEFT JOIN app_user USING (user_Id)
+        SELECT r.reimbursement_id, rt.type_name, rs.status_name, author.user_id AS author_user_id,
+        author.username AS author_username, author.pass AS author_pass, author.first_name AS author_first_name,
+        author.last_name AS author_last_name, author.email AS author_email, author.role_id AS author_role_id,
+        ar.role_type AS author_role_type, resolver.user_id AS resolver_user_id,
+        resolver.username AS resolver_username, resolver.pass AS resolver_pass,
+        resolver.first_name AS resolver_first_name, resolver.last_name AS resolver_last_name,
+        resolver.email AS resolver_email, resolver.role_id AS resolver_role_id,
+        rr.role_type AS resolver_role_type, amount, date_submitted, date_resolved, description
+             FROM reimbursement AS r
+             LEFT JOIN reimbursement_type AS rt USING (type_id)
+             INNER JOIN reimbursement_status AS rs USING (status_id)
+             INNER JOIN app_user AS author ON (r.author = author.user_id)
+             INNER JOIN user_role AS ar ON (ar.role_id = author.role_id)
+             LEFT JOIN app_user AS resolver ON (r.resolver = resolver.user_id)
+             INNER JOIN user_role AS rr ON (rr.role_id = resolver.role_id)
         `;
         const result = await client.query(queryString);
+        console.log(result);
         return result.rows.map(reimbursementConverter); // run converter on result and return array of converted user on postman
     } catch (err) {
         console.log(err);

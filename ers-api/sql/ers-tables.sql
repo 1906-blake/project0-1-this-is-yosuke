@@ -25,12 +25,12 @@ CREATE TABLE reimbursement_type (
 
 CREATE TABLE reimbursement (
 	reimbursement_id SERIAL PRIMARY KEY,
-	user_Id INTEGER REFERENCES app_user(user_Id) NOT NULL,
+	user_id INTEGER REFERENCES app_user(user_id) NOT NULL,
 	amount numeric(8, 2) NOT NULL,
 	date_submitted INTEGER NOT NULL,
     date_resolved INTEGER,
     description TEXT NOT NULL,
-    user_Id INTEGER REFERENCES app_user(user_Id),
+    role_id INTEGER REFERENCES user_role(role_id),
     status_id INTEGER REFERENCES reimbursement_status(status_id) NOT NULL,
     type_id INTEGER REFERENCES reimbursement_type(type_id)
 );

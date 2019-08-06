@@ -7,23 +7,45 @@ import { environment } from '../../environment';
 // import { type } from 'os';
 
 interface IState {
-    reimbursements: Reimbursement[]
+    reimbursements: Reimbursement[],
+    status: ReimbursementStatus[],
+    statusDropdown: {
+        isOpen: boolean,
+        selection: string
+    }
 }
 
 export default class ReimbursementComponent extends Component<{}, IState> {
     constructor(props: any) {
         super(props);
         this.state = {
-            reimbursements: []
+            reimbursements: [],
+            status: [],
+            statusDropdown: {
+                isOpen: false,
+                selection: 'All'
+            }
         };            
     }
 
     async componentDidMount() {
         this.getReimbursements();
+        this.getStatus();
     }
 
     getReimbursements = async () => {
         const resp = await fetch(environment.context +'/reimbursements', {
+            credentials: 'include'
+        });
+        const reimbursementsFromServer = await resp.json();
+        this.setState({
+            reimbursements: reimbursementsFromServer
+        });
+        console.log(reimbursementsFromServer);
+    }
+
+    getStatus = async () => {
+        const resp = await fetch(environment.context +'/status', {
             credentials: 'include'
         });
         const reimbursementsFromServer = await resp.json();
