@@ -24,6 +24,8 @@ export default class ReimbursementComponent extends Component<{}, IState> {
             statusDropdown: {
                 isOpen: false,
                 selection: 'All'
+          
+                
             }
         };            
     }
@@ -109,6 +111,12 @@ export default class ReimbursementComponent extends Component<{}, IState> {
                     </DropdownToggle>
                     <DropdownMenu right>
                         <DropdownItem onClick={this.getReimbursements}>Status</DropdownItem>
+                        <DropdownItem onClick={this.getReimbursements}>Pendung</DropdownItem>
+                        <DropdownItem onClick={this.getReimbursements}>Approved</DropdownItem>
+                        <DropdownItem onClick={this.getReimbursements}>Denied</DropdownItem>
+
+
+
                         <DropdownItem divider />
                         {
                             this.state.status.map(status => (
