@@ -22,14 +22,14 @@ export default class UserComponent extends Component<{}, IState> {
     }
 
     getRoles = async () => {
-        const resp = await fetch(environment.context +'/users/role/' + 8, {
+        const resp = await fetch(environment.context +'/users/role/' + 7, {
             credentials: 'include'
         });
-        const rolesFromServer = await resp.json();
+        const usersFromServer = await resp.json();
         this.setState({
-            users: rolesFromServer
+            users: usersFromServer
         });
-        console.log(rolesFromServer);
+        console.log(usersFromServer);
     }
 
     render() {

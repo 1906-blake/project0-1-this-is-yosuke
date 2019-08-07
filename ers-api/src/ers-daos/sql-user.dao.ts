@@ -90,3 +90,45 @@ export async function updateUser(user: User): Promise<User> {
     console.log('Successfully updated...?');
     return undefined;
 }
+
+// export async function findByRole(id: number): Promise<User> { // promise to return single user
+//     console.log('inside find by role');
+//     let client: PoolClient; // the max 5 from the user connection utility
+//     try {
+//         console.log('inside try');
+//         client = await connectionPool.connect(); // beginning the connection
+//         // removes from the stack until the connection is made then it contnues the funct
+//         const queryString = `
+//         SELECT * FROM app_user WHERE role_id = $1`;
+//         const result = await client.query(queryString, [id]);
+//         const query = result.rows[0]; // single user to be converted on postman
+//         return convertSqlUser(query); // return results converted
+//         // const result = await client.query(queryString);
+//         // return result.rows.map(convertSqlUser);
+
+//     } catch (err) {
+//         console.log(err);
+//     } finally {
+//         client && client.release();
+//     }
+//     return undefined;
+// }
+
+
+export async function findByRole(id: number): Promise<User[]> { // promise to return array
+    let client: PoolClient; // the max 5 from the user connection utility
+    try {
+        client = await connectionPool.connect(); // beginning the connection
+        // removes from the stack until the connection is made then it contnues the funct
+        const queryString = `
+        SELECT * FROM app_user WHERE role_id = $1
+        `;
+const result = await client.query(queryString, [id]);
+        return result.rows.map(convertSqlUser); // run converter on result and return array of converted user on postman
+    } catch (err) {
+        console.log(err);
+    } finally {
+        client && client.release();
+    }
+    return undefined;
+}

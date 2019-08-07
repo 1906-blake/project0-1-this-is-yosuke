@@ -14,8 +14,11 @@ import ReimbursementComponent from './components/reimbursements/reimbursement.co
 import Denied from './components/denied/denied.component';
 import Resolved from './components/resolved/resolved.component';
 import Pending from './components/pending/pending.component';
-import UserComponent from './components/users/users.component';
 import { Submission} from './components/submission/submission.component';
+import UserComponent from './components/users/users.component';
+import Admin from './components/admin/admin.component';
+import Manager from './components/manager/manager.component';
+import Employee from './components/employee/employee.component';
 import { UpdateUser} from './components/update-user/update-user.component';
 
 const App: React.FC = () => {
@@ -33,11 +36,14 @@ const App: React.FC = () => {
           <Route path="/sign-in" component={SignIn} />
           <Route path="/tic-tac-toe" component={TicTacToe} />
           <Route path="/reimbursements" component={ReimbursementComponent} />
-          <Route path="/users" component={UserComponent} />
           <Route path="/denied" component={Denied} />
           <Route path="/pending" component={Pending} />
           <Route path="/resolved" component={Resolved} />
           <Route path="/submission" component={Submission} />
+          <Route path="/users" component={UserComponent} />
+          <Route path="/admin" component={Admin} />
+          <Route path="/manager" component={Manager} />
+          <Route path="/employee" component={Employee} />
           <Route path="/updateUser" component={UpdateUser} />
           <Route component={NotFound} />
         </Switch>

@@ -43,7 +43,7 @@ export default class UserComponent extends Component<{}, IState> {
     }
 
     getRoles = async () => {
-        const resp = await fetch(environment.context +'/roles', {
+        const resp = await fetch(environment.context +'/users/', {
             credentials: 'include'
         });
         const rolesFromServer = await resp.json();

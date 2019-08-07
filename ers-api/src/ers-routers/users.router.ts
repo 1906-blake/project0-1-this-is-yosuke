@@ -9,7 +9,7 @@ export const usersRouter = express.Router();
 usersRouter.get('', [
     authMiddleware(8, 9),
     async (req, res) => {
-        // console.log(req.session.user);
+      //  console.log(req.session);
     const users = await userDao.findUsers(); // returning promise
     res.json(users);
     // res.send('Found all user');  // respond to server method
@@ -40,17 +40,11 @@ usersRouter.patch('/user/:userid', [
     res.send('update for the user is done');
 }]);
 
-/**
- * /users
- * partially update user resource
- */
-//  usersRouter.patch('', async (req, res) => {
-//     const userId = req.body.id;
-//     const currentLoggedInUser = req.session.user;
-//     if (currentLoggedInUser && currentLoggedInUser.id === userId) {
-//         const updatedUser = await userDao.updateUser(req.body);
-//         res.json(updatedUser);
-//     } else {
-//         res.sendStatus(403);
-//     }
-// });
+usersRouter.get('/role/:role_id', [
+    authMiddleware(8, 9),
+    async (req, res) => {
+    const id = req.params.role_id; // gets status id and stores in id
+    const users = await userDao.findByRole(id); // calling the find by id function in userDao
+    res.json(users);
+}]);
+
