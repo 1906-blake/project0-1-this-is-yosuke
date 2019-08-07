@@ -31,7 +31,7 @@ export default class ReimbursementComponent extends Component<{}, IState> {
     }
 
     getReimbursementsByStatusId = async () => {
-        const resp = await fetch(environment.context +'/reimbursements/status/' + 8, {
+        const resp = await fetch(environment.context +'/reimbursements/status/8', {
             credentials: 'include'
         });
         const reimbursementsFromServer = await resp.json();

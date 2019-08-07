@@ -24,7 +24,7 @@ export async function findReimbursements(): Promise<Reimbursement[]> { // promis
              INNER JOIN app_user AS author ON (r.author = author.user_id)
              INNER JOIN user_role AS ar ON (ar.role_id = author.role_id)
              LEFT JOIN app_user AS resolver ON (r.resolver = resolver.user_id)
-             INNER JOIN user_role AS rr ON (rr.role_id = resolver.role_id)
+             LEFT JOIN user_role AS rr ON (rr.role_id = resolver.role_id)
         `;
         const result = await client.query(queryString);
         console.log(result);
@@ -80,7 +80,7 @@ export async function findByUserId(authorId: number) {
             INNER JOIN app_user AS author ON (r.author = author.user_id)
             INNER JOIN user_role AS ar ON (ar.role_id = author.role_id)
             LEFT JOIN app_user AS resolver ON (r.resolver = resolver.user_id)
-            INNER JOIN user_role AS rr ON (rr.role_id = resolver.role_id)
+            LEFT JOIN user_role AS rr ON (rr.role_id = resolver.role_id)
             WHERE author = $1
             ORDER BY date_submitted ASC`;       // ORDERS BY QUERY BY DATE
         const result = await client.query(queryString, [authorId]);
@@ -148,9 +148,10 @@ export async function findReimburseByStatusId(status_id: number) {
              INNER JOIN app_user AS author ON (r.author = author.user_id)
              INNER JOIN user_role AS ar ON (ar.role_id = author.role_id)
              LEFT JOIN app_user AS resolver ON (r.resolver = resolver.user_id)
-             INNER JOIN user_role AS rr ON (rr.role_id = resolver.role_id)
+             LEFT JOIN user_role AS rr ON (rr.role_id = resolver.role_id)
              WHERE status_id = $1`;
         const result = await client.query(queryString, [status_id]);
+        console.log('Reimbursements found by Status Id');
         return result.rows.map(reimbursementConverter);
         // const sqlResult = result.rows[0];
         // console.log(sqlResult);
@@ -160,7 +161,7 @@ export async function findReimburseByStatusId(status_id: number) {
     } finally {
         client && client.release();
     }
-    console.log('User found by Status Id');
+    console.log('Reimbursements found by Status Id');
     return undefined;
 }
 
