@@ -1,16 +1,16 @@
 import { connectionPool } from '../ers-util/connection.util';
 import { PoolClient } from 'pg';
-import { ReimbursementStatus } from '../ers-models/reimbursementStatus';
+import { Role } from '../ers-models/role';
 
 
 export async function findAll() {
-    console.log('finding all reimbursements');
+    console.log('finding all users');
     let client: PoolClient;
     try {
         client = await connectionPool.connect(); // basically .then is everything after this
-        const result = await client.query('SELECT * FROM reimbursementStatus');
+        const result = await client.query('SELECT * FROM role');
         // convert result from sql object to js object
-        return result.rows.map(sqlStatus => new ReimbursementStatus(sqlStatus.statusId, sqlStatus.status));
+        return result.rows.map(sqlStatus => new Role(sqlStatus.statusId, sqlStatus.status));
     } catch (err) {
         console.log(err);
     } finally {

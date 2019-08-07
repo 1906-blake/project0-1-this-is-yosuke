@@ -105,9 +105,9 @@ export default class ReimbursementComponent extends Component<{}, IState> {
                         isOpen={this.state.statusDropdown.isOpen} 
                         toggle={this.toggleStatusDropdown}>
 
-                    <DropdownToggle caret>
+                    {/* <DropdownToggle caret>
                         {this.state.statusDropdown.selection}
-                    </DropdownToggle>
+                    </DropdownToggle> */}
                     <DropdownMenu right>
                         <DropdownItem onClick={this.getReimbursements}>Status</DropdownItem>
                         <DropdownItem onClick={this.getReimbursements}>Pending</DropdownItem>

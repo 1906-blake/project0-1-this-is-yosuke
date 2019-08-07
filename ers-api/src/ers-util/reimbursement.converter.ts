@@ -2,7 +2,7 @@ import Reimbursement from '../ers-models/reimbursement';
 import { ReimbursementStatus } from '../ers-models/reimbursementStatus';
 import ReimbursementType from '../ers-models/reimbursementType';
 import User from '../ers-models/user';
-import Role from '../ers-models/role';
+import { Role } from '../ers-models/role';
 
 export function reimbursementConverter(row) {
     return new Reimbursement(row.reimbursement_id,

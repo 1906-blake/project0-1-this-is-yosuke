@@ -22,6 +22,9 @@ export class NavComponent extends React.Component {
             <li className="nav-item active">
               <Link to="/sign-in" className="unset-anchor nav-link">Sign In</Link>
             </li>
+             <li className="nav-item active">
+              <Link to="/reimbursements" className="unset-anchor nav-link">View Reimbursements</Link>
+            </li>
             <li className="nav-item active dropdown">
               <div className="nav-link dropdown-toggle pointer" id="examples-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Find By Status</div>
               <div className="dropdown-menu" aria-labelledby="examples-dropdown">
@@ -31,7 +34,15 @@ export class NavComponent extends React.Component {
               </div>
             </li>
             <li className="nav-item active">
-              <Link to="/reimbursements" className="unset-anchor nav-link">View Reimbursements</Link>
+              <Link to="/users" className="unset-anchor nav-link">View Users</Link>
+            </li>
+            <li className="nav-item active dropdown">
+              <div className="nav-link dropdown-toggle pointer" id="examples-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Find By Role</div>
+              <div className="dropdown-menu" aria-labelledby="examples-dropdown">
+                <div className="dropdown-item"><Link to="/employee" className="unset-anchor nav-link active">Employees</Link></div>
+                <div className="dropdown-item"><Link to="/manager" className="unset-anchor nav-link active">Managers</Link></div>
+                <div className="dropdown-item"><Link to="/admin" className="unset-anchor nav-link active">Administrators</Link></div>
+              </div>
             </li>
             <li className="nav-item active">
               <Link to="/submission" className="unset-anchor nav-link">Submit Reimbursements</Link>

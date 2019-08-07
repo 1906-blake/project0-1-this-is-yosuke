@@ -14,6 +14,7 @@ import ReimbursementComponent from './components/reimbursements/reimbursement.co
 import Denied from './components/denied/denied.component';
 import Resolved from './components/resolved/resolved.component';
 import Pending from './components/pending/pending.component';
+import UserComponent from './components/users/users.component';
 import { Submission} from './components/submission/submission.component';
 import { UpdateUser} from './components/update-user/update-user.component';
 
@@ -32,6 +33,7 @@ const App: React.FC = () => {
           <Route path="/sign-in" component={SignIn} />
           <Route path="/tic-tac-toe" component={TicTacToe} />
           <Route path="/reimbursements" component={ReimbursementComponent} />
+          <Route path="/users" component={UserComponent} />
           <Route path="/denied" component={Denied} />
           <Route path="/pending" component={Pending} />
           <Route path="/resolved" component={Resolved} />
