@@ -23,15 +23,13 @@ export default class ReimbursementComponent extends Component<{}, IState> {
             statusDropdown: {
                 isOpen: false,
                 selection: 'All'
-          
-                
             }
         };            
     }
 
     async componentDidMount() {
         this.getReimbursements();
-        this.getStatus();
+        // this.getStatus();
     }
 
     getReimbursements = async () => {
@@ -45,16 +43,16 @@ export default class ReimbursementComponent extends Component<{}, IState> {
         console.log(reimbursementsFromServer);
     }
 
-    getStatus = async () => {
-        const resp = await fetch(environment.context +'/status', {
-            credentials: 'include'
-        });
-        const reimbursementsFromServer = await resp.json();
-        this.setState({
-            reimbursements: reimbursementsFromServer
-        });
-        console.log(reimbursementsFromServer);
-    }
+    // getStatus = async () => {
+    //     const resp = await fetch(environment.context +'/status', {
+    //         credentials: 'include'
+    //     });
+    //     const reimbursementsFromServer = await resp.json();
+    //     this.setState({
+    //         reimbursements: reimbursementsFromServer
+    //     });
+    //     console.log(reimbursementsFromServer);
+    // }
 
     getReimbursementsByAuthor = async () => {
         const resp = await fetch(environment.context +'/reimbursements', {

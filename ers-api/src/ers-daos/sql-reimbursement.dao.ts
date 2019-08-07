@@ -37,7 +37,7 @@ export async function findReimbursements(): Promise<Reimbursement[]> { // promis
     return undefined;
 }
 
-export async function submitReimburse(reimbursement: Reimbursement) {
+export async function submitReimburse(reimbursement: Partial<Reimbursement>) {
     let client: PoolClient;
     try {
         client = await connectionPool.connect(); // basically .then is everything after this
@@ -48,7 +48,7 @@ export async function submitReimburse(reimbursement: Reimbursement) {
         `;
         const params = [reimbursement.author, reimbursement.amount, reimbursement.dateSubmitted, reimbursement.description, reimbursement.resolver, reimbursement.status, reimbursement.type];
         const result = await client.query(queryString, params);
-        reimbursement.reimbursementId = reimbursementConverter(result.rows[0]).reimbursementId;
+        reimbursement = result.rows[0];
         return reimbursement;
     } catch (err) {
         console.log(err);

@@ -48,7 +48,7 @@ export class NavComponent extends React.Component {
               <Link to="/submission" className="unset-anchor nav-link">Submit Reimbursements</Link>
             </li>
             <li className="nav-item active">
-              <Link to="/updateUser" className="unset-anchor nav-link">Update user</Link>
+              <Link to="/updateUser" className="unset-anchor nav-link">Update Profile</Link>
             </li>
             {/* <li className="nav-item active dropdown">
               <div className="nav-link dropdown-toggle pointer" id="examples-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Examples</div>
